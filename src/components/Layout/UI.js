@@ -1,8 +1,8 @@
-import styled, { injectGlobal } from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import testFontFaceWOFF2 from '~assets/fonts/Montserrat/Montserrat-Regular.woff2';
-import testFontFaceWOFF from '~assets/fonts/Montserrat/Montserrat-Regular.woff';
-import testFontFaceSVG from '~assets/fonts/Montserrat/Montserrat-Regular.svg';
+import styled, { injectGlobal } from "styled-components";
+import { NavLink } from "react-router-dom";
+import testFontFaceWOFF2 from "~assets/fonts/Montserrat/Montserrat-Regular.woff2";
+import testFontFaceWOFF from "~assets/fonts/Montserrat/Montserrat-Regular.woff";
+import testFontFaceSVG from "~assets/fonts/Montserrat/Montserrat-Regular.svg";
 
 injectGlobal`
   @font-face{

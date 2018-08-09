@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux-immutable';
-import routerReducer from '~reducers/Router';
-import testsReducer from '~reducers/Tests';
+import { combineReducers } from "redux-immutable";
+import routerReducer from "~reducers/Router";
+import testsReducer from "~reducers/Tests";
 
 export const createActions = ({ state, action }, actions) => {
   const cases = actions[action.type];

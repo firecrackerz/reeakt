@@ -1,21 +1,21 @@
-import http from 'http';
-import path from 'path';
-import express from 'express';
-import React from 'react';
-import { renderToString, renderToStaticMarkup } from 'react-dom/server';
-import { Provider } from 'react-redux';
-import Helmet from 'react-helmet';
-import StaticRouter from 'react-router-dom/StaticRouter';
-import rootSagas from '~sagas';
-import Html from '~components/Html';
-import { routes, renderRoutes } from '../../src/routes';
-import configureStore from '../../src/store';
+/* global webpackIsomorphicTools */
+import http from "http";
+import path from "path";
+import express from "express";
+import React from "react";
+import { renderToString, renderToStaticMarkup } from "react-dom/server";
+import { Provider } from "react-redux";
+import StaticRouter from "react-router-dom/StaticRouter";
+import rootSagas from "~sagas";
+import Html from "~components/Html";
+import { routes, renderRoutes } from "../../src/routes";
+import configureStore from "../../src/store";
 
 const app = express();
-const host = process.env.HOST || 'localhost';
+const host = process.env.HOST || "localhost";
 const port = process.env.PORT || 8080;
 
-app.use(express.static(path.join(__dirname, '../', '../', 'dist')));
+app.use(express.static(path.join(__dirname, "../", "../", "dist")));
 const server = new http.Server(app);
 
 app.use((req, res) => {
@@ -29,17 +29,27 @@ app.use((req, res) => {
     </Provider>
   );
 
-  store.runSaga(rootSagas).done.then(() => {
-    if (context.url) {
-      res.redirect(302, context.url);
-      return;
-    }
+  store
+    .runSaga(rootSagas)
+    .done.then(() => {
+      if (context.url) {
+        res.redirect(302, context.url);
+        return;
+      }
 
-    res.set('content-type','text/html');
-    res.send(`<!doctype html>${renderToStaticMarkup(<Html component={component} assets={webpackIsomorphicTools.assets()} store={store} />)}`);
-    res.end();
-  })
-  .catch(e => console.log(e));
+      res.set("content-type", "text/html");
+      res.send(
+        `<!doctype html>${renderToStaticMarkup(
+          <Html
+            component={component}
+            assets={webpackIsomorphicTools.assets()}
+            store={store}
+          />
+        )}`
+      );
+      res.end();
+    })
+    .catch(e => console.log(e));
 
   renderToString(component);
 
@@ -47,11 +57,17 @@ app.use((req, res) => {
 });
 
 if (port) {
-  server.listen(port, (err) => {
-    if (err) console.error(`ERROR: ${err}`);
+  server.listen(port, err => {
+    if (err) {
+      console.error(`ERROR: ${err}`);
+    }
 
-    if(process.env.NODE_ENV === 'production') console.info(`Server Bootstrap Successful! Open http://${host}:${port} to see the Production Environment`);
+    if (process.env.NODE_ENV === "production") {
+      console.info(
+        `Server Bootstrap Successful! Open http://${host}:${port} to see the Production Environment`
+      );
+    }
   });
 } else {
-  console.error('ERROR: No PORT environment variable has been specified');
+  console.error("ERROR: No PORT environment variable has been specified");
 }

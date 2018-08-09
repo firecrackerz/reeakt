@@ -1,4 +1,8 @@
-import { FETCH_TESTS_REQUEST, FETCH_TESTS_SUCCESS, FETCH_TESTS_FAILURE } from '~reducers/Tests/types';
+import {
+  FETCH_TESTS_REQUEST,
+  FETCH_TESTS_SUCCESS,
+  FETCH_TESTS_FAILURE
+} from "~reducers/Tests/types";
 
 export const getTests = () => {
   return {
@@ -6,14 +10,14 @@ export const getTests = () => {
   };
 };
 
-export const getTestsSuccess = (tests) => {
+export const getTestsSuccess = tests => {
   return {
     type: FETCH_TESTS_SUCCESS,
     payload: { tests }
   };
 };
 
-export const getTestsFailure = (error) => {
+export const getTestsFailure = error => {
   return {
     type: FETCH_TESTS_FAILURE,
     payload: { error }

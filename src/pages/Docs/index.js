@@ -1,16 +1,27 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import { Wrapper, Content, DocsTitle, Techs, Tech, CLI, CLILabel, CLICommand } from '~pages/Docs/UI';
+import React from "react";
+import Helmet from "react-helmet";
+import {
+  Wrapper,
+  Content,
+  DocsTitle,
+  Techs,
+  Tech,
+  CLI,
+  CLILabel,
+  CLICommand
+} from "~pages/Docs/UI";
 
 const Docs = () => {
   return (
     <Wrapper>
-      <Helmet title={'Docs - reeakt'} />
+      <Helmet title={"Docs - reeakt"} />
       <Content>
         <DocsTitle>Support</DocsTitle>
 
         <Techs>
-          <Tech>SSR <small>(Server-Side Rendering)</small></Tech>
+          <Tech>
+            SSR <small>(Server-Side Rendering)</small>
+          </Tech>
           <Tech>react</Tech>
           <Tech>react-router</Tech>
           <Tech>redux</Tech>
@@ -18,11 +29,18 @@ const Docs = () => {
           <Tech>immutable.js</Tech>
           <Tech>redux-immutable</Tech>
           <Tech>styled-components</Tech>
-          <Tech>HMR <small>(Hot Module Reload)</small></Tech>
+          <Tech>
+            HMR <small>(Hot Module Reload)</small>
+          </Tech>
           <Tech>webpack</Tech>
           <Tech>jest & enzyme</Tech>
           <Tech>eslint</Tech>
-          <Tech>ducks <small>(a modern and optimized way to work with redux structure)</small></Tech>
+          <Tech>
+            ducks{" "}
+            <small>
+              (a modern and optimized way to work with redux structure)
+            </small>
+          </Tech>
           <Tech>axios</Tech>
           <Tech>express</Tech>
         </Techs>

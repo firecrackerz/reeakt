@@ -1,5 +1,3 @@
-import Layout from '~components/Layout';
+import Layout from "~components/Layout";
 
-export {
-  Layout
-};
+export { Layout };

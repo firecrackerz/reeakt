@@ -1,9 +1,8 @@
-import { fromJS } from 'immutable';
-import { LOCATION_CHANGE } from 'react-router-redux';
-import routerReducer from '~reducers/Router';
+import { fromJS } from "immutable";
+import { LOCATION_CHANGE } from "react-router-redux";
+import routerReducer from "~reducers/Router";
 
-
-describe('routerReducer', () => {
+describe("routerReducer", () => {
   let state;
   beforeEach(() => {
     state = fromJS({
@@ -11,17 +10,17 @@ describe('routerReducer', () => {
     });
   });
 
-  it('should return the initial state', () => {
+  it("should return the initial state", () => {
     const expectedResult = state;
     expect(routerReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('updates the path', () => {
+  it("updates the path", () => {
     const fixture = {
       type: LOCATION_CHANGE,
       payload: {
-        path: '/bar',
-        action: 'PUSH'
+        path: "/bar",
+        action: "PUSH"
       }
     };
     const expectedResult = state.merge({

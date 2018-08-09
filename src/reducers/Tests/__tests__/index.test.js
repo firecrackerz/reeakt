@@ -1,9 +1,12 @@
-import { fromJS } from 'immutable';
-import testsReducer from '~reducers/Tests';
-import { getTests, getTestsSuccess, getTestsFailure } from '~reducers/Tests/actions';
+import { fromJS } from "immutable";
+import testsReducer from "~reducers/Tests";
+import {
+  getTests,
+  getTestsSuccess,
+  getTestsFailure
+} from "~reducers/Tests/actions";
 
-
-describe('testsReducer', () => {
+describe("testsReducer", () => {
   let state;
   beforeEach(() => {
     state = fromJS({
@@ -13,12 +16,12 @@ describe('testsReducer', () => {
     });
   });
 
-  it('should return the initial state', () => {
+  it("should return the initial state", () => {
     const expectedResult = state;
     expect(testsReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('should handle the getTests action correctly', () => {
+  it("should handle the getTests action correctly", () => {
     const expectedResult = state.merge({
       isLoading: true,
       error: null,
@@ -28,7 +31,7 @@ describe('testsReducer', () => {
     expect(testsReducer(state, getTests())).toEqual(expectedResult);
   });
 
-  it('should handle the getTestsSuccess action correctly', () => {
+  it("should handle the getTestsSuccess action correctly", () => {
     const fixture = [{ test: 1 }];
     const expectedResult = state.merge({
       isLoading: false,
@@ -36,17 +39,21 @@ describe('testsReducer', () => {
       tests: fixture
     });
 
-    expect(testsReducer(state, getTestsSuccess(fixture))).toEqual(expectedResult);
+    expect(testsReducer(state, getTestsSuccess(fixture))).toEqual(
+      expectedResult
+    );
   });
 
-  it('should handle the getTestsFailure action correctly', () => {
-    const fixture = new Error('Something went wrong');
+  it("should handle the getTestsFailure action correctly", () => {
+    const fixture = new Error("Something went wrong");
     const expectedResult = state.merge({
       isLoading: false,
       error: fixture,
       tests: {}
     });
 
-    expect(testsReducer(state, getTestsFailure(fixture))).toEqual(expectedResult);
+    expect(testsReducer(state, getTestsFailure(fixture))).toEqual(
+      expectedResult
+    );
   });
 });

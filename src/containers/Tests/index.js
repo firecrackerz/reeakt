@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getTests } from '~reducers/Tests/actions';
-import { selectTests } from '~reducers/Tests/selectors';
-import CircularJSON from 'circular-json';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getTests } from "~reducers/Tests/actions";
+import { selectTests } from "~reducers/Tests/selectors";
+import CircularJSON from "circular-json";
 
 @connect(state => ({ tests: selectTests(state) }))
 export default class Tests extends Component {
@@ -11,7 +11,7 @@ export default class Tests extends Component {
     dispatch: PropTypes.func.isRequired,
     getTests: PropTypes.func,
     tests: PropTypes.object
-  }
+  };
 
   componentWillMount() {
     this.props.dispatch(getTests());
@@ -20,7 +20,7 @@ export default class Tests extends Component {
   render() {
     return (
       <div>
-        <pre>{ CircularJSON.stringify(this.props.tests, null, 2) }</pre>
+        <pre>{CircularJSON.stringify(this.props.tests, null, 2)}</pre>
       </div>
     );
   }

@@ -1,42 +1,54 @@
-
-const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const WebpackIsomorphicToolsPlugin = require("webpack-isomorphic-tools/plugin");
 
 module.exports = {
   assets: {
     images: {
-      extensions: ['jpeg', 'jpg', 'png', 'gif'],
+      extensions: ["jpeg", "jpg", "png", "gif"],
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
     fonts: {
-      extensions: ['woff', 'woff2'],
+      extensions: ["woff", "woff2"],
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
     svg: {
-      extension: 'svg',
+      extension: "svg",
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
     style_modules: {
-      extensions: ['css'],
-      filter: function(module, regex, options, log) {
+      extensions: ["css"],
+      filter(module, regex, options, log) {
         if (options.development) {
-          return WebpackIsomorphicToolsPlugin.style_loader_filter(module, regex, options, log);
-        } else {
-          return regex.test(module.name);
+          return WebpackIsomorphicToolsPlugin.style_loader_filter(
+            module,
+            regex,
+            options,
+            log
+          );
         }
+
+        return regex.test(module.name);
       },
-      path: function(module, options, log) {
+      path(module, options, log) {
         if (options.development) {
-          return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(module, options, log);
-        } else {
-          return module.name;
+          return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(
+            module,
+            options,
+            log
+          );
         }
+
+        return module.name;
       },
-      parser: function(module, options, log) {
+      parser(module, options, log) {
         if (options.development) {
-          return WebpackIsomorphicToolsPlugin.css_modules_loader_parser(module, options, log);
-        } else {
-          return module.source;
+          return WebpackIsomorphicToolsPlugin.css_modules_loader_parser(
+            module,
+            options,
+            log
+          );
         }
+
+        return module.source;
       }
     }
   }

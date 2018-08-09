@@ -1,5 +1,3 @@
-import Tests from '~containers/Tests';
+import Tests from "~containers/Tests";
 
-export {
-  Tests
-};
+export { Tests };

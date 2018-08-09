@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const NotFoundTitle = styled.h1`
   text-align: center;
