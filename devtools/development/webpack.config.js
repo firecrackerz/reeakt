@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
 const srcPath = path.join(__dirname, '../', '../', '/src/');
@@ -10,6 +9,7 @@ const webpackIsomorphicTools = new WebpackIsomorphicToolsPlugin(require('../isom
 module.exports = (port) => {
   return {
     devtool: 'inline-source-map',
+    mode: 'development',
     entry: {
       main: [
         'babel-polyfill',
@@ -45,7 +45,11 @@ module.exports = (port) => {
         }]
       }, {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({ fallback: "style-loader", use: "css-loader" })
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }]
       }, {
         test: /\.svg$/,
         include: srcPath,
@@ -75,7 +79,6 @@ module.exports = (port) => {
       new webpack.DefinePlugin({
         'process.env': { 'NODE_ENV': JSON.stringify('development') }
       }),
-      new ExtractTextPlugin("styles.css"),
       webpackIsomorphicTools.development()
     ],
     resolve: {

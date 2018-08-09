@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
 const srcPath = path.join(__dirname, '../', '../', '/src/');
@@ -10,6 +9,7 @@ const webpackIsomorphicTools = new WebpackIsomorphicToolsPlugin(require('../isom
 
 module.exports = {
   context: path.join(__dirname, '..', '..'),
+  mode: 'production',
   entry: {
     main: [
       'babel-polyfill',
@@ -51,7 +51,11 @@ module.exports = {
       }]
     }, {
       test: /\.css$/,
-      use: ExtractTextPlugin.extract({ fallback: "style-loader", use: [{ loader: "css-loader", options: { minimize: true } }]})
+      use: [{
+        loader: MiniCssExtractPlugin.loader
+      }, {
+        loader: 'css-loader'
+      }]
     }, {
       test: /\.svg$/,
       include: srcPath,
@@ -80,9 +84,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': { 'NODE_ENV': JSON.stringify('production') }
     }),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
-    new UglifyJsPlugin(),
-    new ExtractTextPlugin("[chunkhash].styles.css"),
+    new MiniCssExtractPlugin({}),
     webpackIsomorphicTools
   ],
   resolve: {
