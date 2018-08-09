@@ -5,9 +5,6 @@
 </div>
 
 <div align="center">
-  <a href="https://dependencyci.com/github/obetomuniz/reeakt">
-    <img src="https://dependencyci.com/github/obetomuniz/reeakt/badge?maxAge=0" alt="Dependency Status" />
-  </a>
   <a href="https://travis-ci.org/obetomuniz/reeakt">
     <img src="https://travis-ci.org/obetomuniz/reeakt.svg?maxAge=0&branch=master" alt="Build Status" />
   </a>
@@ -34,6 +31,7 @@
 - express
 
 ## Installation
+
 ```
 $ git clone https://github.com/obetomuniz/reeakt.git
 $ npm install
@@ -42,16 +40,19 @@ $ npm install
 ## CLI
 
 #### Run the Development Mode
+
 ```
 $ npm run dev
 ```
 
 #### Run the Production Mode
+
 ```
 $ npm run start
 ```
 
 #### Run the tests
+
 ```
 $ npm run test
 ```
