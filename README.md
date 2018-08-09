@@ -48,12 +48,6 @@ $ npm run dev
 
 #### Run the Production Mode
 ```
-$ npm run prod
-```
-
-#### Build and Run the Production Server
-```
-$ npm run build
 $ npm run start
 ```
 
