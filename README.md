@@ -20,14 +20,13 @@
 
 - SSR (Server-Side Rendering)
 - react
-- react-router v4
+- react-router
 - redux
 - redux-saga
 - immutable.js
 - redux-immutable
-- styled-components v2
-- webpack 3
-- webpack-bundle-analyzer
+- styled-components
+- webpack
 - jest & enzyme
 - eslint
 - ducks _(a modern and optimized way to work with redux structure)_
@@ -61,11 +60,6 @@ $ npm run start
 #### Run the tests
 ```
 $ npm run test
-```
-
-#### Run the webpack-bundle-analyzer
-```
-$ npm run bundle-analyzer
 ```
 
 ## License

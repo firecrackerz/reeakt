@@ -5,7 +5,6 @@ import webpack from 'webpack';
 import webpackConfig from './webpack.config';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import DashboardPlugin from 'webpack-dashboard/plugin';
 import React from 'react';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import Html from '~components/Html';
@@ -14,7 +13,6 @@ function loadDevServer(port) {
   const app = express();
   const host = process.env.HOST || 'localhost';
   const compiler = webpack(webpackConfig(port));
-  compiler.apply(new DashboardPlugin());
   const serverOptions = {
     contentBase: 'http://' + host + ':' + port,
     quiet: true,

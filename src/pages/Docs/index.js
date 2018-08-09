@@ -12,15 +12,14 @@ const Docs = () => {
         <Techs>
           <Tech>SSR <small>(Server-Side Rendering)</small></Tech>
           <Tech>react</Tech>
-          <Tech>react-router v4</Tech>
+          <Tech>react-router</Tech>
           <Tech>redux</Tech>
           <Tech>redux-saga</Tech>
           <Tech>immutable.js</Tech>
           <Tech>redux-immutable</Tech>
-          <Tech>styled-components v2</Tech>
+          <Tech>styled-components</Tech>
           <Tech>HMR <small>(Hot Module Reload)</small></Tech>
-          <Tech>webpack 3</Tech>
-          <Tech>webpack-bundle-analyzer</Tech>
+          <Tech>webpack</Tech>
           <Tech>jest & enzyme</Tech>
           <Tech>eslint</Tech>
           <Tech>ducks <small>(a modern and optimized way to work with redux structure)</small></Tech>
