@@ -15,13 +15,13 @@
 
 ## Tooling
 
+- TypeScript
 - SSR (Server-Side Rendering)
 - react
 - react-router
 - redux
 - redux-saga
-- immutable.js
-- redux-immutable
+- immer
 - styled-components
 - webpack
 - jest & enzyme

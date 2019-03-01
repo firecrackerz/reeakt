@@ -12,5 +12,3 @@ profile.json
 .idea
 *.iml
 .vscode
-webpack-assets.json
-webpack-stats.json
