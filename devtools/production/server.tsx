@@ -3,9 +3,12 @@ import path from 'path';
 import express from 'express';
 import * as React from 'react';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import { Store } from 'redux';
+import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import Html from '@components/core/html';
 import Routes, { routesConfig } from '@components/core/routes';
+import configureStore from '@services/store';
 
 const app = express();
 const host = process.env.HOST || 'localhost';
@@ -19,11 +22,14 @@ interface ContextType {
 }
 
 app.use((req, res) => {
+  const store: Store = configureStore({});
   const context: ContextType = {};
   const component = (
-    <StaticRouter location={req.url} context={context}>
-      {Routes(routesConfig)}
-    </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        {Routes(routesConfig)}
+      </StaticRouter>
+    </Provider>
   );
 
   // store
@@ -35,7 +41,7 @@ app.use((req, res) => {
   }
 
   res.set('content-type', 'text/html');
-  res.send(`<!doctype html>${renderToStaticMarkup(<Html component={component} />)}`);
+  res.send(`<!doctype html>${renderToStaticMarkup(<Html component={component} store={store} />)}`);
   res.end();
   // })
   // .catch(e => console.log(e));
