@@ -9,10 +9,17 @@ import { StaticRouter } from 'react-router-dom';
 import Html from '@components/core/html';
 import Routes, { routesConfig } from '@components/core/routes';
 import configureStore from '@services/store';
+import monitorSagas from '@services/monitor-sagas';
+import Sagas from '@sagas/index';
 
 const app = express();
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 8081;
+
+interface SagaStore extends Store {
+  runSaga?: any;
+  close?: any;
+}
 
 app.use(express.static(path.join(__dirname, '../', '../', 'dist')));
 const server = new http.Server(app);
@@ -22,7 +29,7 @@ interface ContextType {
 }
 
 app.use((req, res) => {
-  const store: Store = configureStore({});
+  const store: SagaStore = configureStore({});
   const context: ContextType = {};
   const component = (
     <Provider store={store}>
@@ -32,23 +39,24 @@ app.use((req, res) => {
     </Provider>
   );
 
-  // store
-  //   .runSaga(rootSagas)
-  //   .done.then(() => {
-  if (context.url) {
-    res.redirect(302, context.url);
-    return;
-  }
+  const sagasDone = monitorSagas(store);
 
-  res.set('content-type', 'text/html');
-  res.send(`<!doctype html>${renderToStaticMarkup(<Html component={component} store={store} />)}`);
-  res.end();
-  // })
-  // .catch(e => console.log(e));
+  sagasDone().then(() => {
+    if (context.url) {
+      res.redirect(302, context.url);
+      return;
+    }
+
+    res.set('content-type', 'text/html');
+    res.send(
+      `<!doctype html>${renderToStaticMarkup(<Html component={component} store={store} />)}`
+    );
+    res.end();
+  });
 
   renderToString(component);
 
-  // store.close();
+  store.close();
 });
 
 if (port) {
