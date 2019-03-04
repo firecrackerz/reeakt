@@ -3,8 +3,7 @@
 /// <reference path="./components/core/routes/index.d.ts" />
 /// <reference path="./components/shared/header/index.d.ts" />
 /// <reference path="./components/shared/content/index.d.ts" />
-/// <reference path="./components/demos/hello-stateful/index.d.ts" />
-/// <reference path="./components/demos/hello-stateless/index.d.ts" />
+/// <reference path="./components/shared/demo/index.d.ts" />
 /// <reference path="./containers/demos/data-fetch/index.d.ts" />
 
 declare module '*.png' {

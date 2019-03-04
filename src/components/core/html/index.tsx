@@ -34,7 +34,7 @@ export default (props: HtmlProps) => {
         {sheet.getStyleElement()}
       </head>
       <body>
-        <div id="root" dangerouslySetInnerHTML={{ __html: body }} />
+        <div id="root" style={{ height: '100vh' }} dangerouslySetInnerHTML={{ __html: body }} />
         {props.store && (
           <script
             type="module"

@@ -2,7 +2,7 @@ import * as serialize from 'serialize-javascript';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { getDemo } from '@reducers/demo/actions';
-import { Title } from './ui';
+import { PlainJSON } from './ui';
 
 class DataFetch extends React.Component<DemosDataFetchProps, {}> {
   componentWillMount() {
@@ -10,7 +10,7 @@ class DataFetch extends React.Component<DemosDataFetchProps, {}> {
   }
 
   render() {
-    return <Title>{serialize(this.props.demo)}</Title>;
+    return <PlainJSON>{serialize(this.props.demo, { space: 1 })}</PlainJSON>;
   }
 }
 
