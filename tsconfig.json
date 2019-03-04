@@ -13,6 +13,7 @@
       "@devtools/*": ["devtools/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@containers/*": ["src/containers/*"],
       "@pages/*": ["src/pages/*"],
       "@reducers/*": ["src/reducers/*"],
       "@sagas/*": ["src/sagas/*"],
