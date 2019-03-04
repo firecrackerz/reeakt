@@ -1,4 +1,4 @@
 interface DemoProps {
   label: string;
-  children: node;
+  children: React.ReactNode;
 }

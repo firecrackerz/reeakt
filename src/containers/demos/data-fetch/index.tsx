@@ -1,4 +1,3 @@
-import * as serialize from 'serialize-javascript';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { getDemo } from '@reducers/demo/actions';
@@ -10,7 +9,7 @@ class DataFetch extends React.Component<DemosDataFetchProps, {}> {
   }
 
   render() {
-    return <PlainJSON>{serialize(this.props.demo, { space: 1 })}</PlainJSON>;
+    return <PlainJSON>{JSON.stringify(this.props.demo, null, 2)}</PlainJSON>;
   }
 }
 

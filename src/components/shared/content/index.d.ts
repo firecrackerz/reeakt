@@ -1,3 +1,3 @@
 interface ContentProps {
-  children: node;
+  children: React.ReactNode;
 }
