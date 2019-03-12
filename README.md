@@ -29,12 +29,13 @@
 - ducks _(a modern and optimized way to work with redux structure)_
 - axios
 - express
+- yarn
 
 ## Installation
 
 ```
 $ git clone https://github.com/obetomuniz/reeakt.git
-$ npm install
+$ yarn install
 ```
 
 ## CLI
@@ -42,19 +43,7 @@ $ npm install
 #### Run the Development Mode
 
 ```
-$ npm run dev
-```
-
-#### Run the Production Mode
-
-```
-$ npm run start
-```
-
-#### Run the tests
-
-```
-$ npm run test
+$ yarn dev
 ```
 
 ## License
